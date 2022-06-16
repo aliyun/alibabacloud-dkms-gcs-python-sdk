@@ -59,7 +59,7 @@ def verify(context, message):
 
 key_id = "<your-key-id>"
 algorithm = "<your-algorithm>"
-message = "<your-message>"
+message = "<your-message>".encode("utf-8")
 # RAW-原始消息，DIGEST-摘要
 message_type = "RAW"
 context = sign(key_id, message, message_type, algorithm)
