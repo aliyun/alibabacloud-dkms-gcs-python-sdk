@@ -59,8 +59,8 @@ def verify(context, message):
 
 key_id = "<your-key-id>"
 algorithm = "<your-algorithm>"
-message = base64.b64decode("<your-digest>")
+message = "<your-message>"
 # RAW-原始消息，DIGEST-摘要
-message_type = "<your-message-type>"
+message_type = "RAW"
 context = sign(key_id, message, message_type, algorithm)
 verify(context, message)
