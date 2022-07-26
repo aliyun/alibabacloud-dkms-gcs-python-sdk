@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\tapi.proto\x12\x08protobuf\"B\n\x11KmsEncryptRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x0b\n\x03\x41\x61\x64\x18\x03 \x01(\x0c\"N\n\x12KmsEncryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x16\n\x0e\x43iphertextBlob\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"s\n\x0e\x45ncryptRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"\x7f\n\x0f\x45ncryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x16\n\x0e\x43iphertextBlob\x18\x02 \x01(\x0c\x12\n\n\x02Iv\x18\x03 \x01(\x0c\x12\x11\n\tRequestId\x18\x04 \x01(\t\x12\x11\n\tAlgorithm\x18\x05 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"8\n\x11KmsDecryptRequest\x12\x16\n\x0e\x43iphertextBlob\x18\x01 \x01(\x0c\x12\x0b\n\x03\x41\x61\x64\x18\x02 \x01(\x0c\"I\n\x12KmsDecryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"x\n\x0e\x44\x65\x63ryptRequest\x12\x16\n\x0e\x43iphertextBlob\x18\x01 \x01(\x0c\x12\r\n\x05KeyId\x18\x02 \x01(\t\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"n\n\x0f\x44\x65\x63ryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x05 \x01(\t\"e\n\x0bSignRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0e\n\x06\x44igest\x18\x02 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0f\n\x07Message\x18\x04 \x01(\x0c\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"k\n\x0cSignResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tSignature\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"z\n\rVerifyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0e\n\x06\x44igest\x18\x02 \x01(\x0c\x12\x11\n\tSignature\x18\x03 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x0f\n\x07Message\x18\x05 \x01(\x0c\x12\x13\n\x0bMessageType\x18\x06 \x01(\t\"i\n\x0eVerifyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\r\n\x05Value\x18\x02 \x01(\x08\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"-\n\x0bHmacRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0f\n\x07Message\x18\x02 \x01(\x0c\"C\n\x0cHmacResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tSignature\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"\'\n\x15GenerateRandomRequest\x12\x0e\n\x06Length\x18\x01 \x01(\x05\";\n\x16GenerateRandomResponse\x12\x0e\n\x06Random\x18\x01 \x01(\x0c\x12\x11\n\tRequestId\x18\x02 \x01(\t\"1\n\x0bHashRequest\x12\x0f\n\x07Message\x18\x01 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x02 \x01(\t\"1\n\x0cHashResponse\x12\x0e\n\x06\x44igest\x18\x01 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"^\n\x16GenerateDataKeyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tAlgorithm\x18\x02 \x01(\t\x12\x15\n\rNumberOfBytes\x18\x03 \x01(\x05\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\"\x85\x01\n\x17GenerateDataKeyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\n\n\x02Iv\x18\x02 \x01(\x0c\x12\x11\n\tPlaintext\x18\x03 \x01(\x0c\x12\x16\n\x0e\x43iphertextBlob\x18\x04 \x01(\x0c\x12\x11\n\tRequestId\x18\x05 \x01(\t\x12\x11\n\tAlgorithm\x18\x06 \x01(\t\"$\n\x13GetPublicKeyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\"K\n\x14GetPublicKeyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPublicKey\x18\x02 \x01(\t\x12\x11\n\tRequestId\x18\x03 \x01(\t\"W\n\x05\x45rror\x12\x12\n\nStatusCode\x18\x01 \x01(\x05\x12\x11\n\tErrorCode\x18\x02 \x01(\t\x12\x14\n\x0c\x45rrorMessage\x18\x03 \x01(\t\x12\x11\n\tRequestId\x18\x04 \x01(\tb\x06proto3'
+  serialized_pb=b'\n\tapi.proto\x12\x08protobuf\"B\n\x11KmsEncryptRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x0b\n\x03\x41\x61\x64\x18\x03 \x01(\x0c\"N\n\x12KmsEncryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x16\n\x0e\x43iphertextBlob\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"s\n\x0e\x45ncryptRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"\x7f\n\x0f\x45ncryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x16\n\x0e\x43iphertextBlob\x18\x02 \x01(\x0c\x12\n\n\x02Iv\x18\x03 \x01(\x0c\x12\x11\n\tRequestId\x18\x04 \x01(\t\x12\x11\n\tAlgorithm\x18\x05 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"8\n\x11KmsDecryptRequest\x12\x16\n\x0e\x43iphertextBlob\x18\x01 \x01(\x0c\x12\x0b\n\x03\x41\x61\x64\x18\x02 \x01(\x0c\"I\n\x12KmsDecryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"x\n\x0e\x44\x65\x63ryptRequest\x12\x16\n\x0e\x43iphertextBlob\x18\x01 \x01(\x0c\x12\r\n\x05KeyId\x18\x02 \x01(\t\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"n\n\x0f\x44\x65\x63ryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x05 \x01(\t\"e\n\x0bSignRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0e\n\x06\x44igest\x18\x02 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0f\n\x07Message\x18\x04 \x01(\x0c\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"k\n\x0cSignResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tSignature\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"z\n\rVerifyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0e\n\x06\x44igest\x18\x02 \x01(\x0c\x12\x11\n\tSignature\x18\x03 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x0f\n\x07Message\x18\x05 \x01(\x0c\x12\x13\n\x0bMessageType\x18\x06 \x01(\t\"i\n\x0eVerifyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\r\n\x05Value\x18\x02 \x01(\x08\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"-\n\x0bHmacRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0f\n\x07Message\x18\x02 \x01(\x0c\"C\n\x0cHmacResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tSignature\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"\'\n\x15GenerateRandomRequest\x12\x0e\n\x06Length\x18\x01 \x01(\x05\";\n\x16GenerateRandomResponse\x12\x0e\n\x06Random\x18\x01 \x01(\x0c\x12\x11\n\tRequestId\x18\x02 \x01(\t\"1\n\x0bHashRequest\x12\x0f\n\x07Message\x18\x01 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x02 \x01(\t\"1\n\x0cHashResponse\x12\x0e\n\x06\x44igest\x18\x01 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"^\n\x16GenerateDataKeyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tAlgorithm\x18\x02 \x01(\t\x12\x15\n\rNumberOfBytes\x18\x03 \x01(\x05\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\"\x85\x01\n\x17GenerateDataKeyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\n\n\x02Iv\x18\x02 \x01(\x0c\x12\x11\n\tPlaintext\x18\x03 \x01(\x0c\x12\x16\n\x0e\x43iphertextBlob\x18\x04 \x01(\x0c\x12\x11\n\tRequestId\x18\x05 \x01(\t\x12\x11\n\tAlgorithm\x18\x06 \x01(\t\"$\n\x13GetPublicKeyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\"K\n\x14GetPublicKeyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPublicKey\x18\x02 \x01(\t\x12\x11\n\tRequestId\x18\x03 \x01(\t\"W\n\x05\x45rror\x12\x12\n\nStatusCode\x18\x01 \x01(\x05\x12\x11\n\tErrorCode\x18\x02 \x01(\t\x12\x14\n\x0c\x45rrorMessage\x18\x03 \x01(\t\x12\x11\n\tRequestId\x18\x04 \x01(\t\"q\n\x15GetSecretValueRequest\x12\x12\n\nSecretName\x18\x01 \x01(\t\x12\x14\n\x0cVersionStage\x18\x02 \x01(\t\x12\x11\n\tVersionId\x18\x03 \x01(\t\x12\x1b\n\x13\x46\x65tchExtendedConfig\x18\x04 \x01(\x08\"\xbe\x02\n\x16GetSecretValueResponse\x12\x12\n\nSecretName\x18\x01 \x01(\t\x12\x12\n\nSecretType\x18\x02 \x01(\t\x12\x12\n\nSecretData\x18\x03 \x01(\t\x12\x16\n\x0eSecretDataType\x18\x04 \x01(\t\x12\x15\n\rVersionStages\x18\x05 \x03(\t\x12\x11\n\tVersionId\x18\x06 \x01(\t\x12\x12\n\nCreateTime\x18\x07 \x01(\t\x12\x11\n\tRequestId\x18\x08 \x01(\t\x12\x18\n\x10LastRotationDate\x18\t \x01(\t\x12\x18\n\x10NextRotationDate\x18\n \x01(\t\x12\x16\n\x0e\x45xtendedConfig\x18\x0b \x01(\t\x12\x19\n\x11\x41utomaticRotation\x18\x0c \x01(\t\x12\x18\n\x10RotationInterval\x18\r \x01(\tb\x06proto3'
 )
 
 
@@ -1194,6 +1194,175 @@ _ERROR = _descriptor.Descriptor(
   serialized_end=1981,
 )
 
+
+_GETSECRETVALUEREQUEST = _descriptor.Descriptor(
+  name='GetSecretValueRequest',
+  full_name='protobuf.GetSecretValueRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='SecretName', full_name='protobuf.GetSecretValueRequest.SecretName', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='VersionStage', full_name='protobuf.GetSecretValueRequest.VersionStage', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='VersionId', full_name='protobuf.GetSecretValueRequest.VersionId', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='FetchExtendedConfig', full_name='protobuf.GetSecretValueRequest.FetchExtendedConfig', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1983,
+  serialized_end=2096,
+)
+
+
+_GETSECRETVALUERESPONSE = _descriptor.Descriptor(
+  name='GetSecretValueResponse',
+  full_name='protobuf.GetSecretValueResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='SecretName', full_name='protobuf.GetSecretValueResponse.SecretName', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='SecretType', full_name='protobuf.GetSecretValueResponse.SecretType', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='SecretData', full_name='protobuf.GetSecretValueResponse.SecretData', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='SecretDataType', full_name='protobuf.GetSecretValueResponse.SecretDataType', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='VersionStages', full_name='protobuf.GetSecretValueResponse.VersionStages', index=4,
+      number=5, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='VersionId', full_name='protobuf.GetSecretValueResponse.VersionId', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CreateTime', full_name='protobuf.GetSecretValueResponse.CreateTime', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='RequestId', full_name='protobuf.GetSecretValueResponse.RequestId', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='LastRotationDate', full_name='protobuf.GetSecretValueResponse.LastRotationDate', index=8,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='NextRotationDate', full_name='protobuf.GetSecretValueResponse.NextRotationDate', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='ExtendedConfig', full_name='protobuf.GetSecretValueResponse.ExtendedConfig', index=10,
+      number=11, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='AutomaticRotation', full_name='protobuf.GetSecretValueResponse.AutomaticRotation', index=11,
+      number=12, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='RotationInterval', full_name='protobuf.GetSecretValueResponse.RotationInterval', index=12,
+      number=13, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2099,
+  serialized_end=2417,
+)
+
 DESCRIPTOR.message_types_by_name['KmsEncryptRequest'] = _KMSENCRYPTREQUEST
 DESCRIPTOR.message_types_by_name['KmsEncryptResponse'] = _KMSENCRYPTRESPONSE
 DESCRIPTOR.message_types_by_name['EncryptRequest'] = _ENCRYPTREQUEST
@@ -1217,6 +1386,8 @@ DESCRIPTOR.message_types_by_name['GenerateDataKeyResponse'] = _GENERATEDATAKEYRE
 DESCRIPTOR.message_types_by_name['GetPublicKeyRequest'] = _GETPUBLICKEYREQUEST
 DESCRIPTOR.message_types_by_name['GetPublicKeyResponse'] = _GETPUBLICKEYRESPONSE
 DESCRIPTOR.message_types_by_name['Error'] = _ERROR
+DESCRIPTOR.message_types_by_name['GetSecretValueRequest'] = _GETSECRETVALUEREQUEST
+DESCRIPTOR.message_types_by_name['GetSecretValueResponse'] = _GETSECRETVALUERESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 KmsEncryptRequest = _reflection.GeneratedProtocolMessageType('KmsEncryptRequest', (_message.Message,), {
@@ -1379,6 +1550,20 @@ Error = _reflection.GeneratedProtocolMessageType('Error', (_message.Message,), {
   # @@protoc_insertion_point(class_scope:protobuf.Error)
   })
 _sym_db.RegisterMessage(Error)
+
+GetSecretValueRequest = _reflection.GeneratedProtocolMessageType('GetSecretValueRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETSECRETVALUEREQUEST,
+  '__module__' : 'api_pb2'
+  # @@protoc_insertion_point(class_scope:protobuf.GetSecretValueRequest)
+  })
+_sym_db.RegisterMessage(GetSecretValueRequest)
+
+GetSecretValueResponse = _reflection.GeneratedProtocolMessageType('GetSecretValueResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETSECRETVALUERESPONSE,
+  '__module__' : 'api_pb2'
+  # @@protoc_insertion_point(class_scope:protobuf.GetSecretValueResponse)
+  })
+_sym_db.RegisterMessage(GetSecretValueResponse)
 
 
 # @@protoc_insertion_point(module_scope)

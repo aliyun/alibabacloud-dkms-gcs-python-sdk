@@ -441,3 +441,44 @@ class Client(object):
         result["Plaintext"] = kms_decrypt_response.Plaintext
         result["RequestId"] = kms_decrypt_response.RequestId
         return result
+
+    @staticmethod
+    def get_serialized_get_secret_value_request(
+            req_body,
+    ):
+        get_secret_value_request = api_pb2.GetSecretValueRequest()
+        secret_name = req_body.get("SecretName")
+        if secret_name:
+            get_secret_value_request.SecretName = secret_name
+        version_stage = req_body.get("VersionStage")
+        if version_stage:
+            get_secret_value_request.VersionStage = version_stage
+        version_id = req_body.get("VersionId")
+        if version_id:
+            get_secret_value_request.VersionId = version_id
+        fetch_extended_config = req_body.get("FetchExtendedConfig")
+        if fetch_extended_config:
+            get_secret_value_request.FetchExtendedConfig = fetch_extended_config
+        return get_secret_value_request.SerializeToString()
+
+    @staticmethod
+    def parse_get_secret_value_response(
+            res_body,
+    ):
+        result = {}
+        get_secret_value_response = api_pb2.GetSecretValueResponse()
+        get_secret_value_response.ParseFromString(res_body)
+        result["SecretName"] = get_secret_value_response.SecretName
+        result["SecretType"] = get_secret_value_response.SecretType
+        result["SecretData"] = get_secret_value_response.SecretData
+        result["SecretDataType"] = get_secret_value_response.SecretDataType
+        result["VersionStages"] = get_secret_value_response.VersionStages
+        result["VersionId"] = get_secret_value_response.VersionId
+        result["CreateTime"] = get_secret_value_response.CreateTime
+        result["LastRotationDate"] = get_secret_value_response.LastRotationDate
+        result["NextRotationDate"] = get_secret_value_response.NextRotationDate
+        result["ExtendedConfig"] = get_secret_value_response.ExtendedConfig
+        result["AutomaticRotation"] = get_secret_value_response.AutomaticRotation
+        result["RotationInterval"] = get_secret_value_response.RotationInterval
+        result["RequestId"] = get_secret_value_response.RequestId
+        return result
