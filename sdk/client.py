@@ -258,3 +258,42 @@ class Client(DedicatedKmsOpenapiClient):
     ):
         runtime = dedicated_kms_openapi_util_models.RuntimeOptions()
         return self.get_public_key_with_options(request, runtime)
+
+    def get_secret_value_with_options(
+            self,
+            request,
+            runtime,
+    ):
+        UtilClient.validate_model(request)
+        req_body = UtilClient.to_map(request)
+        req_body_bytes = DedicatedKmsOpenapiUtilClient.get_serialized_get_secret_value_request(req_body)
+        resp_entity = self.do_request('GetSecretValue', 'dkms-gcs-0.2', 'https', 'POST', 'RSA_PKCS1_SHA_256',
+                                      req_body_bytes, runtime, request.request_headers)
+        resp_map = DedicatedKmsOpenapiUtilClient.parse_get_secret_value_response(resp_entity.body_bytes)
+        get_secret_value_response = TeaCore.from_map(
+            dedicated_kms_sdk_models.GetSecretValueResponse(),
+            {
+                'RequestId': resp_map.get('RequestId'),
+                'SecretName': resp_map.get('SecretName'),
+                'SecretType': resp_map.get('SecretType'),
+                'SecretData': resp_map.get('SecretData'),
+                'SecretDataType': resp_map.get('SecretDataType'),
+                'VersionStages': resp_map.get('VersionStages'),
+                'VersionId': resp_map.get('VersionId'),
+                'CreateTime': resp_map.get('CreateTime'),
+                'LastRotationDate': resp_map.get('LastRotationDate'),
+                'NextRotationDate': resp_map.get('NextRotationDate'),
+                'ExtendedConfig': resp_map.get('ExtendedConfig'),
+                'AutomaticRotation': resp_map.get('AutomaticRotation'),
+                'RotationInterval': resp_map.get('RotationInterval')
+            }
+        )
+        get_secret_value_response.response_headers = resp_entity.response_headers
+        return get_secret_value_response
+
+    def get_secret_value(
+            self,
+            request,
+    ):
+        runtime = dedicated_kms_openapi_util_models.RuntimeOptions()
+        return self.get_secret_value_with_options(request, runtime)
