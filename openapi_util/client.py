@@ -472,7 +472,7 @@ class Client(object):
         result["SecretType"] = get_secret_value_response.SecretType
         result["SecretData"] = get_secret_value_response.SecretData
         result["SecretDataType"] = get_secret_value_response.SecretDataType
-        result["VersionStages"] = get_secret_value_response.VersionStages
+        result["VersionStages"] = [version_stage for version_stage in get_secret_value_response.VersionStages]
         result["VersionId"] = get_secret_value_response.VersionId
         result["CreateTime"] = get_secret_value_response.CreateTime
         result["LastRotationDate"] = get_secret_value_response.LastRotationDate
