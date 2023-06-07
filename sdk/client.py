@@ -1,12 +1,12 @@
 # coding=utf-8
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.core import TeaCore
+from alibabacloud_tea_util.client import Client as UtilClient
 
 from openapi.client import Client as DedicatedKmsOpenapiClient
-from sdk import models as dedicated_kms_sdk_models
 from openapi_util import models as dedicated_kms_openapi_util_models
-from alibabacloud_tea_util.client import Client as UtilClient
 from openapi_util.client import Client as DedicatedKmsOpenapiUtilClient
+from sdk import models as dedicated_kms_sdk_models
 
 
 class Client(DedicatedKmsOpenapiClient):
@@ -297,3 +297,104 @@ class Client(DedicatedKmsOpenapiClient):
     ):
         runtime = dedicated_kms_openapi_util_models.RuntimeOptions()
         return self.get_secret_value_with_options(request, runtime)
+
+    def advance_encrypt(
+            self,
+            request,
+    ):
+        runtime = dedicated_kms_openapi_util_models.RuntimeOptions()
+        return self.advance_encrypt_with_options(request, runtime)
+
+    def advance_encrypt_with_options(
+            self,
+            request,
+            runtime,
+    ):
+        UtilClient.validate_model(request)
+        req_body = UtilClient.to_map(request)
+        req_body_bytes = DedicatedKmsOpenapiUtilClient.get_serialized_advance_encrypt_request(req_body)
+        response_entity = self.do_request('AdvanceEncrypt', 'dkms-gcs-0.2', 'https', 'POST', 'RSA_PKCS1_SHA_256',
+                                          req_body_bytes, runtime, request.request_headers)
+        resp_map = DedicatedKmsOpenapiUtilClient.parse_advance_encrypt_response(
+            UtilClient.assert_as_bytes(response_entity.body_bytes))
+        advance_encrypt_response = TeaCore.from_map(
+            dedicated_kms_sdk_models.AdvanceEncryptResponse(),
+            {
+                'KeyId': resp_map.get('KeyId'),
+                'CiphertextBlob': resp_map.get('CiphertextBlob'),
+                'Iv': resp_map.get('Iv'),
+                'RequestId': resp_map.get('RequestId'),
+                'Algorithm': resp_map.get('Algorithm'),
+                'PaddingMode': resp_map.get('PaddingMode'),
+                'KeyVersionId': resp_map.get('KeyVersionId'),
+            }
+        )
+        advance_encrypt_response.response_headers = response_entity.response_headers
+        return advance_encrypt_response
+
+    def advance_decrypt(
+            self,
+            request,
+    ):
+        runtime = dedicated_kms_openapi_util_models.RuntimeOptions()
+        return self.advance_decrypt_with_options(request, runtime)
+
+    def advance_decrypt_with_options(
+            self,
+            request,
+            runtime,
+    ):
+        UtilClient.validate_model(request)
+        req_body = UtilClient.to_map(request)
+        req_body_bytes = DedicatedKmsOpenapiUtilClient.get_serialized_advance_decrypt_request(req_body)
+        response_entity = self.do_request('AdvanceDecrypt', 'dkms-gcs-0.2', 'https', 'POST', 'RSA_PKCS1_SHA_256',
+                                          req_body_bytes, runtime, request.request_headers)
+        resp_map = DedicatedKmsOpenapiUtilClient.parse_advance_decrypt_response(
+            UtilClient.assert_as_bytes(response_entity.body_bytes))
+        advance_decrypt_response = TeaCore.from_map(
+            dedicated_kms_sdk_models.AdvanceDecryptResponse(),
+            {
+                'KeyId': resp_map.get('KeyId'),
+                'Plaintext': resp_map.get('Plaintext'),
+                'RequestId': resp_map.get('RequestId'),
+                'Algorithm': resp_map.get('Algorithm'),
+                'PaddingMode': resp_map.get('PaddingMode'),
+                'KeyVersionId': resp_map.get('KeyVersionId'),
+            }
+        )
+        advance_decrypt_response.response_headers = response_entity.response_headers
+        return advance_decrypt_response
+
+    def advance_generate_data_key(
+            self,
+            request,
+    ):
+        runtime = dedicated_kms_openapi_util_models.RuntimeOptions()
+        return self.advance_generate_data_key_with_options(request, runtime)
+
+    def advance_generate_data_key_with_options(
+            self,
+            request,
+            runtime,
+    ):
+        UtilClient.validate_model(request)
+        req_body = UtilClient.to_map(request)
+        req_body_bytes = DedicatedKmsOpenapiUtilClient.get_serialized_advance_generate_data_key_request(req_body)
+        response_entity = self.do_request('AdvanceGenerateDataKey', 'dkms-gcs-0.2', 'https', 'POST',
+                                          'RSA_PKCS1_SHA_256', req_body_bytes, runtime, request.request_headers)
+        resp_map = DedicatedKmsOpenapiUtilClient.parse_advance_generate_data_key_response(
+            UtilClient.assert_as_bytes(response_entity.body_bytes))
+        advance_generate_data_key_response = TeaCore.from_map(
+            dedicated_kms_sdk_models.AdvanceGenerateDataKeyResponse(),
+            {
+                'KeyId': resp_map.get('KeyId'),
+                'Iv': resp_map.get('Iv'),
+                'Plaintext': resp_map.get('Plaintext'),
+                'CiphertextBlob': resp_map.get('CiphertextBlob'),
+                'RequestId': resp_map.get('RequestId'),
+                'Algorithm': resp_map.get('Algorithm'),
+                'KeyVersionId': resp_map.get('KeyVersionId'),
+            }
+        )
+        advance_generate_data_key_response.response_headers = response_entity.response_headers
+        return advance_generate_data_key_response

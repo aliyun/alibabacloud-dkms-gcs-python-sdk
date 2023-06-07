@@ -892,3 +892,345 @@ class GetSecretValueResponse(DKMSResponse):
         if m.get('RotationInterval') is not None:
             self.rotation_interval = m.get('RotationInterval')
         return self
+
+
+class AdvanceEncryptRequest(DKMSRequest):
+    def __init__(
+        self,
+        key_id=None,
+        plaintext=None,
+        algorithm=None,
+        aad=None,
+        iv=None,
+        padding_mode=None,
+    ):
+        super(AdvanceEncryptRequest, self).__init__()
+        self.key_id = key_id
+        self.plaintext = plaintext
+        self.algorithm = algorithm
+        self.aad = aad
+        self.iv = iv
+        self.padding_mode = padding_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super(AdvanceEncryptRequest, self).to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.plaintext is not None:
+            result['Plaintext'] = self.plaintext
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.aad is not None:
+            result['Aad'] = self.aad
+        if self.iv is not None:
+            result['Iv'] = self.iv
+        if self.padding_mode is not None:
+            result['PaddingMode'] = self.padding_mode
+        return result
+
+    def from_map(self, m=None):
+        m = m or dict()
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('Plaintext') is not None:
+            self.plaintext = m.get('Plaintext')
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Aad') is not None:
+            self.aad = m.get('Aad')
+        if m.get('Iv') is not None:
+            self.iv = m.get('Iv')
+        if m.get('PaddingMode') is not None:
+            self.padding_mode = m.get('PaddingMode')
+        return self
+
+
+class AdvanceEncryptResponse(DKMSResponse):
+    def __init__(
+        self,
+        key_id=None,
+        ciphertext_blob=None,
+        iv=None,
+        request_id=None,
+        algorithm=None,
+        padding_mode=None,
+        key_version_id=None,
+    ):
+        super(AdvanceEncryptResponse, self).__init__()
+        self.key_id = key_id
+        self.ciphertext_blob = ciphertext_blob
+        self.iv = iv
+        self.request_id = request_id
+        self.algorithm = algorithm
+        self.padding_mode = padding_mode
+        self.key_version_id = key_version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super(AdvanceEncryptResponse, self).to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.ciphertext_blob is not None:
+            result['CiphertextBlob'] = self.ciphertext_blob
+        if self.iv is not None:
+            result['Iv'] = self.iv
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.padding_mode is not None:
+            result['PaddingMode'] = self.padding_mode
+        if self.key_version_id is not None:
+            result['KeyVersionId'] = self.key_version_id
+        return result
+
+    def from_map(self, m=None):
+        m = m or dict()
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('CiphertextBlob') is not None:
+            self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('Iv') is not None:
+            self.iv = m.get('Iv')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('PaddingMode') is not None:
+            self.padding_mode = m.get('PaddingMode')
+        if m.get('KeyVersionId') is not None:
+            self.key_version_id = m.get('KeyVersionId')
+        return self
+
+
+class AdvanceDecryptRequest(DKMSRequest):
+    def __init__(
+        self,
+        ciphertext_blob=None,
+        key_id=None,
+        algorithm=None,
+        aad=None,
+        iv=None,
+        padding_mode=None,
+    ):
+        super(AdvanceDecryptRequest, self).__init__()
+        self.ciphertext_blob = ciphertext_blob
+        self.key_id = key_id
+        self.algorithm = algorithm
+        self.aad = aad
+        self.iv = iv
+        self.padding_mode = padding_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super(AdvanceDecryptRequest, self).to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ciphertext_blob is not None:
+            result['CiphertextBlob'] = self.ciphertext_blob
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.aad is not None:
+            result['Aad'] = self.aad
+        if self.iv is not None:
+            result['Iv'] = self.iv
+        if self.padding_mode is not None:
+            result['PaddingMode'] = self.padding_mode
+        return result
+
+    def from_map(self, m=None):
+        m = m or dict()
+        if m.get('CiphertextBlob') is not None:
+            self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Aad') is not None:
+            self.aad = m.get('Aad')
+        if m.get('Iv') is not None:
+            self.iv = m.get('Iv')
+        if m.get('PaddingMode') is not None:
+            self.padding_mode = m.get('PaddingMode')
+        return self
+
+
+class AdvanceDecryptResponse(DKMSResponse):
+    def __init__(
+        self,
+        key_id=None,
+        plaintext=None,
+        request_id=None,
+        algorithm=None,
+        padding_mode=None,
+        key_version_id=None,
+    ):
+        super(AdvanceDecryptResponse, self).__init__()
+        self.key_id = key_id
+        self.plaintext = plaintext
+        self.request_id = request_id
+        self.algorithm = algorithm
+        self.padding_mode = padding_mode
+        self.key_version_id = key_version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super(AdvanceDecryptResponse, self).to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.plaintext is not None:
+            result['Plaintext'] = self.plaintext
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.padding_mode is not None:
+            result['PaddingMode'] = self.padding_mode
+        if self.key_version_id is not None:
+            result['KeyVersionId'] = self.key_version_id
+        return result
+
+    def from_map(self, m=None):
+        m = m or dict()
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('Plaintext') is not None:
+            self.plaintext = m.get('Plaintext')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('PaddingMode') is not None:
+            self.padding_mode = m.get('PaddingMode')
+        if m.get('KeyVersionId') is not None:
+            self.key_version_id = m.get('KeyVersionId')
+        return self
+
+
+class AdvanceGenerateDataKeyRequest(DKMSRequest):
+    def __init__(
+        self,
+        key_id=None,
+        number_of_bytes=None,
+        aad=None,
+    ):
+        super(AdvanceGenerateDataKeyRequest, self).__init__()
+        self.key_id = key_id
+        self.number_of_bytes = number_of_bytes
+        self.aad = aad
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super(AdvanceGenerateDataKeyRequest, self).to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.number_of_bytes is not None:
+            result['NumberOfBytes'] = self.number_of_bytes
+        if self.aad is not None:
+            result['Aad'] = self.aad
+        return result
+
+    def from_map(self, m=None):
+        m = m or dict()
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('NumberOfBytes') is not None:
+            self.number_of_bytes = m.get('NumberOfBytes')
+        if m.get('Aad') is not None:
+            self.aad = m.get('Aad')
+        return self
+
+
+class AdvanceGenerateDataKeyResponse(DKMSResponse):
+    def __init__(
+        self,
+        key_id=None,
+        iv=None,
+        plaintext=None,
+        ciphertext_blob=None,
+        request_id=None,
+        algorithm=None,
+        key_version_id=None,
+    ):
+        super(AdvanceGenerateDataKeyResponse, self).__init__()
+        self.key_id = key_id
+        self.iv = iv
+        self.plaintext = plaintext
+        self.ciphertext_blob = ciphertext_blob
+        self.request_id = request_id
+        self.algorithm = algorithm
+        self.key_version_id = key_version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super(AdvanceGenerateDataKeyResponse, self).to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.iv is not None:
+            result['Iv'] = self.iv
+        if self.plaintext is not None:
+            result['Plaintext'] = self.plaintext
+        if self.ciphertext_blob is not None:
+            result['CiphertextBlob'] = self.ciphertext_blob
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.key_version_id is not None:
+            result['KeyVersionId'] = self.key_version_id
+        return result
+
+    def from_map(self, m=None):
+        m = m or dict()
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('Iv') is not None:
+            self.iv = m.get('Iv')
+        if m.get('Plaintext') is not None:
+            self.plaintext = m.get('Plaintext')
+        if m.get('CiphertextBlob') is not None:
+            self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('KeyVersionId') is not None:
+            self.key_version_id = m.get('KeyVersionId')
+        return self
