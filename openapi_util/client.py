@@ -482,3 +482,116 @@ class Client(object):
         result["RotationInterval"] = get_secret_value_response.RotationInterval
         result["RequestId"] = get_secret_value_response.RequestId
         return result
+
+    @staticmethod
+    def get_serialized_advance_encrypt_request(
+            req_body,
+    ):
+        advance_encrypt_request = api_pb2.AdvanceEncryptRequest()
+        key_id = req_body.get("KeyId")
+        if key_id:
+            advance_encrypt_request.KeyId = key_id
+        plaintext = req_body.get("Plaintext")
+        if plaintext:
+            advance_encrypt_request.Plaintext = plaintext
+        algorithm = req_body.get("Algorithm")
+        if algorithm:
+            advance_encrypt_request.Algorithm = algorithm
+        iv = req_body.get("Iv")
+        if iv:
+            advance_encrypt_request.Iv = iv
+        aad = req_body.get("Aad")
+        if aad:
+            advance_encrypt_request.Aad = aad
+        padding_mode = req_body.get("PaddingMode")
+        if padding_mode:
+            advance_encrypt_request.PaddingMode = padding_mode
+        return advance_encrypt_request.SerializeToString()
+
+    @staticmethod
+    def parse_advance_encrypt_response(
+            res_body,
+    ):
+        result = {}
+        advance_encrypt_response = api_pb2.AdvanceEncryptResponse()
+        advance_encrypt_response.ParseFromString(res_body)
+        result["KeyId"] = advance_encrypt_response.KeyId
+        result["CiphertextBlob"] = advance_encrypt_response.CiphertextBlob
+        result["Iv"] = advance_encrypt_response.Iv
+        result["Algorithm"] = advance_encrypt_response.Algorithm
+        result["PaddingMode"] = advance_encrypt_response.PaddingMode
+        result["KeyVersionId"] = advance_encrypt_response.KeyVersionId
+        result["RequestId"] = advance_encrypt_response.RequestId
+        return result
+
+    @staticmethod
+    def get_serialized_advance_decrypt_request(
+            req_body,
+    ):
+        advance_decrypt_request = api_pb2.AdvanceDecryptRequest()
+        key_id = req_body.get("KeyId")
+        if key_id:
+            advance_decrypt_request.KeyId = key_id
+        ciphertext_blob = req_body.get("CiphertextBlob")
+        if ciphertext_blob:
+            advance_decrypt_request.CiphertextBlob = ciphertext_blob
+        algorithm = req_body.get("Algorithm")
+        if algorithm:
+            advance_decrypt_request.Algorithm = algorithm
+        iv = req_body.get("Iv")
+        if iv:
+            advance_decrypt_request.Iv = iv
+        aad = req_body.get("Aad")
+        if aad:
+            advance_decrypt_request.Aad = aad
+        padding_mode = req_body.get("PaddingMode")
+        if padding_mode:
+            advance_decrypt_request.PaddingMode = padding_mode
+        return advance_decrypt_request.SerializeToString()
+
+    @staticmethod
+    def parse_advance_decrypt_response(
+            res_body,
+    ):
+        result = {}
+        advance_decrypt_response = api_pb2.AdvanceDecryptResponse()
+        advance_decrypt_response.ParseFromString(res_body)
+        result["KeyId"] = advance_decrypt_response.KeyId
+        result["Plaintext"] = advance_decrypt_response.Plaintext
+        result["Algorithm"] = advance_decrypt_response.Algorithm
+        result["PaddingMode"] = advance_decrypt_response.PaddingMode
+        result["KeyVersionId"] = advance_decrypt_response.KeyVersionId
+        result["RequestId"] = advance_decrypt_response.RequestId
+        return result
+
+    @staticmethod
+    def get_serialized_advance_generate_data_key_request(
+            req_body,
+    ):
+        advance_generate_data_key_request = api_pb2.AdvanceGenerateDataKeyRequest()
+        key_id = req_body.get("KeyId")
+        if key_id:
+            advance_generate_data_key_request.KeyId = key_id
+        number_of_bytes = req_body.get("NumberOfBytes")
+        if number_of_bytes:
+            advance_generate_data_key_request.NumberOfBytes = number_of_bytes
+        aad = req_body.get("Aad")
+        if aad:
+            advance_generate_data_key_request.Aad = aad
+        return advance_generate_data_key_request.SerializeToString()
+
+    @staticmethod
+    def parse_advance_generate_data_key_response(
+            res_body,
+    ):
+        result = {}
+        advance_generate_data_key_response = api_pb2.AdvanceGenerateDataKeyResponse()
+        advance_generate_data_key_response.ParseFromString(res_body)
+        result["KeyId"] = advance_generate_data_key_response.KeyId
+        result["Iv"] = advance_generate_data_key_response.Iv
+        result["Plaintext"] = advance_generate_data_key_response.Plaintext
+        result["CiphertextBlob"] = advance_generate_data_key_response.CiphertextBlob
+        result["Algorithm"] = advance_generate_data_key_response.Algorithm
+        result["KeyVersionId"] = advance_generate_data_key_response.KeyVersionId
+        result["RequestId"] = advance_generate_data_key_response.RequestId
+        return result
