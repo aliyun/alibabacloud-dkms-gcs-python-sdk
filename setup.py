@@ -20,7 +20,7 @@ URL = "https://github.com/aliyun/alibabacloud-dkms-gcs-python-sdk"
 VERSION = "0.0.3"
 REQUIRES = [
     "protobuf>=3.12.0",
-    "alibabacloud_tea_util>=0.0.2",
+    "alibabacloud_tea_util>=0.3.8, <1.0.0",
     'pyopenssl>=16.2.0',
 ]
 

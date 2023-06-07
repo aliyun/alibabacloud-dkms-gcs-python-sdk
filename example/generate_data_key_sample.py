@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 from openapi.models import Config
 from openapi_util.models import RuntimeOptions
@@ -8,7 +9,7 @@ from sdk.models import GenerateDataKeyRequest
 config = Config()
 config.protocol = "https"
 config.client_key_file = "<your-client-key-file>"
-config.password = "<your-password>"
+config.password = os.getenv('CLIENT_KEY_PASSWORD')
 config.endpoint = "<your-endpoint>"
 client = Client(config)
 

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\tapi.proto\x12\x08protobuf\"B\n\x11KmsEncryptRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x0b\n\x03\x41\x61\x64\x18\x03 \x01(\x0c\"N\n\x12KmsEncryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x16\n\x0e\x43iphertextBlob\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"s\n\x0e\x45ncryptRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"\x7f\n\x0f\x45ncryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x16\n\x0e\x43iphertextBlob\x18\x02 \x01(\x0c\x12\n\n\x02Iv\x18\x03 \x01(\x0c\x12\x11\n\tRequestId\x18\x04 \x01(\t\x12\x11\n\tAlgorithm\x18\x05 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"8\n\x11KmsDecryptRequest\x12\x16\n\x0e\x43iphertextBlob\x18\x01 \x01(\x0c\x12\x0b\n\x03\x41\x61\x64\x18\x02 \x01(\x0c\"I\n\x12KmsDecryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"x\n\x0e\x44\x65\x63ryptRequest\x12\x16\n\x0e\x43iphertextBlob\x18\x01 \x01(\x0c\x12\r\n\x05KeyId\x18\x02 \x01(\t\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"n\n\x0f\x44\x65\x63ryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x05 \x01(\t\"e\n\x0bSignRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0e\n\x06\x44igest\x18\x02 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0f\n\x07Message\x18\x04 \x01(\x0c\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"k\n\x0cSignResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tSignature\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"z\n\rVerifyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0e\n\x06\x44igest\x18\x02 \x01(\x0c\x12\x11\n\tSignature\x18\x03 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x0f\n\x07Message\x18\x05 \x01(\x0c\x12\x13\n\x0bMessageType\x18\x06 \x01(\t\"i\n\x0eVerifyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\r\n\x05Value\x18\x02 \x01(\x08\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"-\n\x0bHmacRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0f\n\x07Message\x18\x02 \x01(\x0c\"C\n\x0cHmacResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tSignature\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"\'\n\x15GenerateRandomRequest\x12\x0e\n\x06Length\x18\x01 \x01(\x05\";\n\x16GenerateRandomResponse\x12\x0e\n\x06Random\x18\x01 \x01(\x0c\x12\x11\n\tRequestId\x18\x02 \x01(\t\"1\n\x0bHashRequest\x12\x0f\n\x07Message\x18\x01 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x02 \x01(\t\"1\n\x0cHashResponse\x12\x0e\n\x06\x44igest\x18\x01 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"^\n\x16GenerateDataKeyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tAlgorithm\x18\x02 \x01(\t\x12\x15\n\rNumberOfBytes\x18\x03 \x01(\x05\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\"\x85\x01\n\x17GenerateDataKeyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\n\n\x02Iv\x18\x02 \x01(\x0c\x12\x11\n\tPlaintext\x18\x03 \x01(\x0c\x12\x16\n\x0e\x43iphertextBlob\x18\x04 \x01(\x0c\x12\x11\n\tRequestId\x18\x05 \x01(\t\x12\x11\n\tAlgorithm\x18\x06 \x01(\t\"$\n\x13GetPublicKeyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\"K\n\x14GetPublicKeyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPublicKey\x18\x02 \x01(\t\x12\x11\n\tRequestId\x18\x03 \x01(\t\"W\n\x05\x45rror\x12\x12\n\nStatusCode\x18\x01 \x01(\x05\x12\x11\n\tErrorCode\x18\x02 \x01(\t\x12\x14\n\x0c\x45rrorMessage\x18\x03 \x01(\t\x12\x11\n\tRequestId\x18\x04 \x01(\t\"q\n\x15GetSecretValueRequest\x12\x12\n\nSecretName\x18\x01 \x01(\t\x12\x14\n\x0cVersionStage\x18\x02 \x01(\t\x12\x11\n\tVersionId\x18\x03 \x01(\t\x12\x1b\n\x13\x46\x65tchExtendedConfig\x18\x04 \x01(\x08\"\xbe\x02\n\x16GetSecretValueResponse\x12\x12\n\nSecretName\x18\x01 \x01(\t\x12\x12\n\nSecretType\x18\x02 \x01(\t\x12\x12\n\nSecretData\x18\x03 \x01(\t\x12\x16\n\x0eSecretDataType\x18\x04 \x01(\t\x12\x15\n\rVersionStages\x18\x05 \x03(\t\x12\x11\n\tVersionId\x18\x06 \x01(\t\x12\x12\n\nCreateTime\x18\x07 \x01(\t\x12\x11\n\tRequestId\x18\x08 \x01(\t\x12\x18\n\x10LastRotationDate\x18\t \x01(\t\x12\x18\n\x10NextRotationDate\x18\n \x01(\t\x12\x16\n\x0e\x45xtendedConfig\x18\x0b \x01(\t\x12\x19\n\x11\x41utomaticRotation\x18\x0c \x01(\t\x12\x18\n\x10RotationInterval\x18\r \x01(\tb\x06proto3'
+  serialized_pb=b'\n\tapi.proto\x12\x08protobuf\"B\n\x11KmsEncryptRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x0b\n\x03\x41\x61\x64\x18\x03 \x01(\x0c\"N\n\x12KmsEncryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x16\n\x0e\x43iphertextBlob\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"s\n\x0e\x45ncryptRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"\x7f\n\x0f\x45ncryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x16\n\x0e\x43iphertextBlob\x18\x02 \x01(\x0c\x12\n\n\x02Iv\x18\x03 \x01(\x0c\x12\x11\n\tRequestId\x18\x04 \x01(\t\x12\x11\n\tAlgorithm\x18\x05 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"8\n\x11KmsDecryptRequest\x12\x16\n\x0e\x43iphertextBlob\x18\x01 \x01(\x0c\x12\x0b\n\x03\x41\x61\x64\x18\x02 \x01(\x0c\"I\n\x12KmsDecryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"x\n\x0e\x44\x65\x63ryptRequest\x12\x16\n\x0e\x43iphertextBlob\x18\x01 \x01(\x0c\x12\r\n\x05KeyId\x18\x02 \x01(\t\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"n\n\x0f\x44\x65\x63ryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x05 \x01(\t\"e\n\x0bSignRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0e\n\x06\x44igest\x18\x02 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0f\n\x07Message\x18\x04 \x01(\x0c\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"k\n\x0cSignResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tSignature\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"z\n\rVerifyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0e\n\x06\x44igest\x18\x02 \x01(\x0c\x12\x11\n\tSignature\x18\x03 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x0f\n\x07Message\x18\x05 \x01(\x0c\x12\x13\n\x0bMessageType\x18\x06 \x01(\t\"i\n\x0eVerifyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\r\n\x05Value\x18\x02 \x01(\x08\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bMessageType\x18\x05 \x01(\t\"-\n\x0bHmacRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x0f\n\x07Message\x18\x02 \x01(\x0c\"C\n\x0cHmacResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tSignature\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"\'\n\x15GenerateRandomRequest\x12\x0e\n\x06Length\x18\x01 \x01(\x05\";\n\x16GenerateRandomResponse\x12\x0e\n\x06Random\x18\x01 \x01(\x0c\x12\x11\n\tRequestId\x18\x02 \x01(\t\"1\n\x0bHashRequest\x12\x0f\n\x07Message\x18\x01 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x02 \x01(\t\"1\n\x0cHashResponse\x12\x0e\n\x06\x44igest\x18\x01 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\"^\n\x16GenerateDataKeyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tAlgorithm\x18\x02 \x01(\t\x12\x15\n\rNumberOfBytes\x18\x03 \x01(\x05\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\"\x85\x01\n\x17GenerateDataKeyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\n\n\x02Iv\x18\x02 \x01(\x0c\x12\x11\n\tPlaintext\x18\x03 \x01(\x0c\x12\x16\n\x0e\x43iphertextBlob\x18\x04 \x01(\x0c\x12\x11\n\tRequestId\x18\x05 \x01(\t\x12\x11\n\tAlgorithm\x18\x06 \x01(\t\"$\n\x13GetPublicKeyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\"K\n\x14GetPublicKeyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPublicKey\x18\x02 \x01(\t\x12\x11\n\tRequestId\x18\x03 \x01(\t\"W\n\x05\x45rror\x12\x12\n\nStatusCode\x18\x01 \x01(\x05\x12\x11\n\tErrorCode\x18\x02 \x01(\t\x12\x14\n\x0c\x45rrorMessage\x18\x03 \x01(\t\x12\x11\n\tRequestId\x18\x04 \x01(\t\"q\n\x15GetSecretValueRequest\x12\x12\n\nSecretName\x18\x01 \x01(\t\x12\x14\n\x0cVersionStage\x18\x02 \x01(\t\x12\x11\n\tVersionId\x18\x03 \x01(\t\x12\x1b\n\x13\x46\x65tchExtendedConfig\x18\x04 \x01(\x08\"\xbe\x02\n\x16GetSecretValueResponse\x12\x12\n\nSecretName\x18\x01 \x01(\t\x12\x12\n\nSecretType\x18\x02 \x01(\t\x12\x12\n\nSecretData\x18\x03 \x01(\t\x12\x16\n\x0eSecretDataType\x18\x04 \x01(\t\x12\x15\n\rVersionStages\x18\x05 \x03(\t\x12\x11\n\tVersionId\x18\x06 \x01(\t\x12\x12\n\nCreateTime\x18\x07 \x01(\t\x12\x11\n\tRequestId\x18\x08 \x01(\t\x12\x18\n\x10LastRotationDate\x18\t \x01(\t\x12\x18\n\x10NextRotationDate\x18\n \x01(\t\x12\x16\n\x0e\x45xtendedConfig\x18\x0b \x01(\t\x12\x19\n\x11\x41utomaticRotation\x18\x0c \x01(\t\x12\x18\n\x10RotationInterval\x18\r \x01(\t\"z\n\x15\x41\x64vanceEncryptRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"\x9c\x01\n\x16\x41\x64vanceEncryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x16\n\x0e\x43iphertextBlob\x18\x02 \x01(\x0c\x12\n\n\x02Iv\x18\x03 \x01(\x0c\x12\x11\n\tRequestId\x18\x04 \x01(\t\x12\x11\n\tAlgorithm\x18\x05 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\x12\x14\n\x0cKeyVersionId\x18\x07 \x01(\t\"\x7f\n\x15\x41\x64vanceDecryptRequest\x12\x16\n\x0e\x43iphertextBlob\x18\x01 \x01(\x0c\x12\r\n\x05KeyId\x18\x02 \x01(\t\x12\x11\n\tAlgorithm\x18\x03 \x01(\t\x12\x0b\n\x03\x41\x61\x64\x18\x04 \x01(\x0c\x12\n\n\x02Iv\x18\x05 \x01(\x0c\x12\x13\n\x0bPaddingMode\x18\x06 \x01(\t\"\x8b\x01\n\x16\x41\x64vanceDecryptResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x11\n\tPlaintext\x18\x02 \x01(\x0c\x12\x11\n\tRequestId\x18\x03 \x01(\t\x12\x11\n\tAlgorithm\x18\x04 \x01(\t\x12\x13\n\x0bPaddingMode\x18\x05 \x01(\t\x12\x14\n\x0cKeyVersionId\x18\x06 \x01(\t\"R\n\x1d\x41\x64vanceGenerateDataKeyRequest\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\x15\n\rNumberOfBytes\x18\x02 \x01(\x05\x12\x0b\n\x03\x41\x61\x64\x18\x03 \x01(\x0c\"\xa2\x01\n\x1e\x41\x64vanceGenerateDataKeyResponse\x12\r\n\x05KeyId\x18\x01 \x01(\t\x12\n\n\x02Iv\x18\x02 \x01(\x0c\x12\x11\n\tPlaintext\x18\x03 \x01(\x0c\x12\x16\n\x0e\x43iphertextBlob\x18\x04 \x01(\x0c\x12\x11\n\tRequestId\x18\x05 \x01(\t\x12\x11\n\tAlgorithm\x18\x06 \x01(\t\x12\x14\n\x0cKeyVersionId\x18\x07 \x01(\tb\x06proto3'
 )
 
 
@@ -1363,6 +1363,401 @@ _GETSECRETVALUERESPONSE = _descriptor.Descriptor(
   serialized_end=2417,
 )
 
+
+_ADVANCEENCRYPTREQUEST = _descriptor.Descriptor(
+  name='AdvanceEncryptRequest',
+  full_name='protobuf.AdvanceEncryptRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='KeyId', full_name='protobuf.AdvanceEncryptRequest.KeyId', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Plaintext', full_name='protobuf.AdvanceEncryptRequest.Plaintext', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Algorithm', full_name='protobuf.AdvanceEncryptRequest.Algorithm', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Aad', full_name='protobuf.AdvanceEncryptRequest.Aad', index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Iv', full_name='protobuf.AdvanceEncryptRequest.Iv', index=4,
+      number=5, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='PaddingMode', full_name='protobuf.AdvanceEncryptRequest.PaddingMode', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2419,
+  serialized_end=2541,
+)
+
+
+_ADVANCEENCRYPTRESPONSE = _descriptor.Descriptor(
+  name='AdvanceEncryptResponse',
+  full_name='protobuf.AdvanceEncryptResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='KeyId', full_name='protobuf.AdvanceEncryptResponse.KeyId', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CiphertextBlob', full_name='protobuf.AdvanceEncryptResponse.CiphertextBlob', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Iv', full_name='protobuf.AdvanceEncryptResponse.Iv', index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='RequestId', full_name='protobuf.AdvanceEncryptResponse.RequestId', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Algorithm', full_name='protobuf.AdvanceEncryptResponse.Algorithm', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='PaddingMode', full_name='protobuf.AdvanceEncryptResponse.PaddingMode', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='KeyVersionId', full_name='protobuf.AdvanceEncryptResponse.KeyVersionId', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2544,
+  serialized_end=2700,
+)
+
+
+_ADVANCEDECRYPTREQUEST = _descriptor.Descriptor(
+  name='AdvanceDecryptRequest',
+  full_name='protobuf.AdvanceDecryptRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='CiphertextBlob', full_name='protobuf.AdvanceDecryptRequest.CiphertextBlob', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='KeyId', full_name='protobuf.AdvanceDecryptRequest.KeyId', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Algorithm', full_name='protobuf.AdvanceDecryptRequest.Algorithm', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Aad', full_name='protobuf.AdvanceDecryptRequest.Aad', index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Iv', full_name='protobuf.AdvanceDecryptRequest.Iv', index=4,
+      number=5, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='PaddingMode', full_name='protobuf.AdvanceDecryptRequest.PaddingMode', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2702,
+  serialized_end=2829,
+)
+
+
+_ADVANCEDECRYPTRESPONSE = _descriptor.Descriptor(
+  name='AdvanceDecryptResponse',
+  full_name='protobuf.AdvanceDecryptResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='KeyId', full_name='protobuf.AdvanceDecryptResponse.KeyId', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Plaintext', full_name='protobuf.AdvanceDecryptResponse.Plaintext', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='RequestId', full_name='protobuf.AdvanceDecryptResponse.RequestId', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Algorithm', full_name='protobuf.AdvanceDecryptResponse.Algorithm', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='PaddingMode', full_name='protobuf.AdvanceDecryptResponse.PaddingMode', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='KeyVersionId', full_name='protobuf.AdvanceDecryptResponse.KeyVersionId', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2832,
+  serialized_end=2971,
+)
+
+
+_ADVANCEGENERATEDATAKEYREQUEST = _descriptor.Descriptor(
+  name='AdvanceGenerateDataKeyRequest',
+  full_name='protobuf.AdvanceGenerateDataKeyRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='KeyId', full_name='protobuf.AdvanceGenerateDataKeyRequest.KeyId', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='NumberOfBytes', full_name='protobuf.AdvanceGenerateDataKeyRequest.NumberOfBytes', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Aad', full_name='protobuf.AdvanceGenerateDataKeyRequest.Aad', index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2973,
+  serialized_end=3055,
+)
+
+
+_ADVANCEGENERATEDATAKEYRESPONSE = _descriptor.Descriptor(
+  name='AdvanceGenerateDataKeyResponse',
+  full_name='protobuf.AdvanceGenerateDataKeyResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='KeyId', full_name='protobuf.AdvanceGenerateDataKeyResponse.KeyId', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Iv', full_name='protobuf.AdvanceGenerateDataKeyResponse.Iv', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Plaintext', full_name='protobuf.AdvanceGenerateDataKeyResponse.Plaintext', index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='CiphertextBlob', full_name='protobuf.AdvanceGenerateDataKeyResponse.CiphertextBlob', index=3,
+      number=4, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='RequestId', full_name='protobuf.AdvanceGenerateDataKeyResponse.RequestId', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='Algorithm', full_name='protobuf.AdvanceGenerateDataKeyResponse.Algorithm', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='KeyVersionId', full_name='protobuf.AdvanceGenerateDataKeyResponse.KeyVersionId', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3058,
+  serialized_end=3220,
+)
+
 DESCRIPTOR.message_types_by_name['KmsEncryptRequest'] = _KMSENCRYPTREQUEST
 DESCRIPTOR.message_types_by_name['KmsEncryptResponse'] = _KMSENCRYPTRESPONSE
 DESCRIPTOR.message_types_by_name['EncryptRequest'] = _ENCRYPTREQUEST
@@ -1388,6 +1783,12 @@ DESCRIPTOR.message_types_by_name['GetPublicKeyResponse'] = _GETPUBLICKEYRESPONSE
 DESCRIPTOR.message_types_by_name['Error'] = _ERROR
 DESCRIPTOR.message_types_by_name['GetSecretValueRequest'] = _GETSECRETVALUEREQUEST
 DESCRIPTOR.message_types_by_name['GetSecretValueResponse'] = _GETSECRETVALUERESPONSE
+DESCRIPTOR.message_types_by_name['AdvanceEncryptRequest'] = _ADVANCEENCRYPTREQUEST
+DESCRIPTOR.message_types_by_name['AdvanceEncryptResponse'] = _ADVANCEENCRYPTRESPONSE
+DESCRIPTOR.message_types_by_name['AdvanceDecryptRequest'] = _ADVANCEDECRYPTREQUEST
+DESCRIPTOR.message_types_by_name['AdvanceDecryptResponse'] = _ADVANCEDECRYPTRESPONSE
+DESCRIPTOR.message_types_by_name['AdvanceGenerateDataKeyRequest'] = _ADVANCEGENERATEDATAKEYREQUEST
+DESCRIPTOR.message_types_by_name['AdvanceGenerateDataKeyResponse'] = _ADVANCEGENERATEDATAKEYRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 KmsEncryptRequest = _reflection.GeneratedProtocolMessageType('KmsEncryptRequest', (_message.Message,), {
@@ -1564,6 +1965,48 @@ GetSecretValueResponse = _reflection.GeneratedProtocolMessageType('GetSecretValu
   # @@protoc_insertion_point(class_scope:protobuf.GetSecretValueResponse)
   })
 _sym_db.RegisterMessage(GetSecretValueResponse)
+
+AdvanceEncryptRequest = _reflection.GeneratedProtocolMessageType('AdvanceEncryptRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ADVANCEENCRYPTREQUEST,
+  '__module__' : 'api_pb2'
+  # @@protoc_insertion_point(class_scope:protobuf.AdvanceEncryptRequest)
+  })
+_sym_db.RegisterMessage(AdvanceEncryptRequest)
+
+AdvanceEncryptResponse = _reflection.GeneratedProtocolMessageType('AdvanceEncryptResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ADVANCEENCRYPTRESPONSE,
+  '__module__' : 'api_pb2'
+  # @@protoc_insertion_point(class_scope:protobuf.AdvanceEncryptResponse)
+  })
+_sym_db.RegisterMessage(AdvanceEncryptResponse)
+
+AdvanceDecryptRequest = _reflection.GeneratedProtocolMessageType('AdvanceDecryptRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ADVANCEDECRYPTREQUEST,
+  '__module__' : 'api_pb2'
+  # @@protoc_insertion_point(class_scope:protobuf.AdvanceDecryptRequest)
+  })
+_sym_db.RegisterMessage(AdvanceDecryptRequest)
+
+AdvanceDecryptResponse = _reflection.GeneratedProtocolMessageType('AdvanceDecryptResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ADVANCEDECRYPTRESPONSE,
+  '__module__' : 'api_pb2'
+  # @@protoc_insertion_point(class_scope:protobuf.AdvanceDecryptResponse)
+  })
+_sym_db.RegisterMessage(AdvanceDecryptResponse)
+
+AdvanceGenerateDataKeyRequest = _reflection.GeneratedProtocolMessageType('AdvanceGenerateDataKeyRequest', (_message.Message,), {
+  'DESCRIPTOR' : _ADVANCEGENERATEDATAKEYREQUEST,
+  '__module__' : 'api_pb2'
+  # @@protoc_insertion_point(class_scope:protobuf.AdvanceGenerateDataKeyRequest)
+  })
+_sym_db.RegisterMessage(AdvanceGenerateDataKeyRequest)
+
+AdvanceGenerateDataKeyResponse = _reflection.GeneratedProtocolMessageType('AdvanceGenerateDataKeyResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ADVANCEGENERATEDATAKEYRESPONSE,
+  '__module__' : 'api_pb2'
+  # @@protoc_insertion_point(class_scope:protobuf.AdvanceGenerateDataKeyResponse)
+  })
+_sym_db.RegisterMessage(AdvanceGenerateDataKeyResponse)
 
 
 # @@protoc_insertion_point(module_scope)

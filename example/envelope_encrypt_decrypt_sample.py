@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
-import string
+import base64
+import os
 import random
+import string
 
 from cryptography.hazmat.primitives.ciphers import (
     Cipher, algorithms, modes
 )
-import base64
+
 from openapi.models import Config
 from openapi_util.models import RuntimeOptions
 from sdk.client import Client
@@ -14,7 +16,7 @@ from sdk.models import GenerateDataKeyRequest, DecryptRequest
 config = Config()
 config.protocol = "https"
 config.client_key_file = "<your-client-key-file>"
-config.password = "<your-password>"
+config.password = os.getenv('CLIENT_KEY_PASSWORD')
 config.endpoint = "<your-endpoint>"
 client = Client(config)
 
