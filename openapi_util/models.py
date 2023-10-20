@@ -1,47 +1,64 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
+from typing import List
 
 
 class RuntimeOptions(TeaModel):
     def __init__(
             self,
-            autoretry=None,
-            ignore_ssl=None,
-            max_attempts=None,
-            backoff_policy=None,
-            backoff_period=None,
-            read_timeout=None,
-            connect_timeout=None,
-            http_proxy=None,
-            https_proxy=None,
-            no_proxy=None,
-            max_idle_conns=None,
-            socks_5proxy=None,
-            socks_5net_work=None,
-            verify=None,
+            autoretry: bool = None,
+            ignore_ssl: bool = None,
+            max_attempts: int = None,
+            backoff_policy: str = None,
+            backoff_period: int = None,
+            read_timeout: int = None,
+            connect_timeout: int = None,
+            http_proxy: str = None,
+            https_proxy: str = None,
+            no_proxy: str = None,
+            max_idle_conns: int = None,
+            socks_5proxy: str = None,
+            socks_5net_work: str = None,
+            verify: str = None,
+            response_headers: List[str] = None,
     ):
+        # 是否自动重试
         self.autoretry = autoretry
+        # 是否忽略SSL认证
         self.ignore_ssl = ignore_ssl
+        # 最大重试次数
         self.max_attempts = max_attempts
+        # 回退策略
         self.backoff_policy = backoff_policy
+        # 回退周期
         self.backoff_period = backoff_period
+        # 读取超时时间
         self.read_timeout = read_timeout
+        # 连接超时时间
         self.connect_timeout = connect_timeout
+        # http代理
         self.http_proxy = http_proxy
+        # https代理
         self.https_proxy = https_proxy
+        # 无代理
         self.no_proxy = no_proxy
+        # 最大闲置连接数
         self.max_idle_conns = max_idle_conns
+        # socks5代理
         self.socks_5proxy = socks_5proxy
+        # socks5代理协议
         self.socks_5net_work = socks_5net_work
+        # 校验
         self.verify = verify
-        # response_headers type is a list
-        self.response_headers = None
+        # 响应头
+        self.response_headers = response_headers
 
     def validate(self):
         pass
 
     def to_map(self):
-        _map = super(RuntimeOptions, self).to_map()
+        _map = super().to_map()
         if _map is not None:
             return _map
 
@@ -74,9 +91,11 @@ class RuntimeOptions(TeaModel):
             result['socks5NetWork'] = self.socks_5net_work
         if self.verify is not None:
             result['verify'] = self.verify
+        if self.response_headers is not None:
+            result['responseHeaders'] = self.response_headers
         return result
 
-    def from_map(self, m=None):
+    def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('autoretry') is not None:
             self.autoretry = m.get('autoretry')
@@ -106,16 +125,18 @@ class RuntimeOptions(TeaModel):
             self.socks_5net_work = m.get('socks5NetWork')
         if m.get('verify') is not None:
             self.verify = m.get('verify')
+        if m.get('responseHeaders') is not None:
+            self.response_headers = m.get('responseHeaders')
         return self
 
 
 class ErrorResponse(TeaModel):
     def __init__(
             self,
-            status_code=None,
-            error_code=None,
-            error_message=None,
-            request_id=None,
+            status_code: str = None,
+            error_code: str = None,
+            error_message: str = None,
+            request_id: str = None,
     ):
         self.status_code = status_code
         self.error_code = error_code
@@ -129,7 +150,7 @@ class ErrorResponse(TeaModel):
         self.validate_required(self.request_id, 'request_id')
 
     def to_map(self):
-        _map = super(ErrorResponse, self).to_map()
+        _map = super().to_map()
         if _map is not None:
             return _map
 
@@ -144,7 +165,7 @@ class ErrorResponse(TeaModel):
             result['RequestId'] = self.request_id
         return result
 
-    def from_map(self, m=None):
+    def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('StatusCode') is not None:
             self.status_code = m.get('StatusCode')

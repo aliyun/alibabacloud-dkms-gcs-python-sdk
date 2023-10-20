@@ -1,28 +1,26 @@
-# coding=utf-8
-import hashlib
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from Tea.exceptions import TeaException
+from typing import Dict, Any
+
+from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_darabonba_map.client import Client as MapClient
+from alibabacloud_darabonba_array.client import Client as ArrayClient
+from alibabacloud_darabonba_string.client import Client as StringClient
 
 from openapi_util.protobuf import api_pb2
+from OpenSSL import crypto
 
 
-class Client(object):
+class Client:
     def __init__(self):
         pass
 
     @staticmethod
-    def get_host(
-            region_id,
-            endpoint,
-    ):
-        if endpoint:
-            return endpoint
-        if region_id:
-            return "cn-hangzhou"
-        return "kms-instance." + region_id + ".aliyuncs.com"
-
-    @staticmethod
     def get_err_message(
-            msg,
-    ):
+            msg: bytes,
+    ) -> dict:
+
         result = {}
         error = api_pb2.Error()
         error.ParseFromString(msg)
@@ -32,306 +30,289 @@ class Client(object):
         return result
 
     @staticmethod
-    def get_string_to_sign(
-            request,
-    ):
-        if not request:
-            return ""
-        method = request.method
-        pathname = request.pathname
-        headers = request.headers
-        query = request.query
-        content_sha256 = "" if not headers.get("content-sha256") else headers.get("content-sha256")
-        content_type = "" if not headers.get("content-type") else headers.get("content-type")
-        date = "" if not headers.get("date") else headers.get("date")
-        header = method + "\n" + content_sha256 + "\n" + content_type + "\n" + date + "\n"
-        canonicalized_headers = Client._get_canonicalized_headers(headers)
-        canonicalized_resource = Client._get_canonicalized_resource(pathname, query)
-        return header + canonicalized_headers + canonicalized_resource
-
-    @staticmethod
-    def _get_canonicalized_headers(headers):
-        if not headers:
-            return ""
-        prefix = "x-kms-"
-        keys = headers.keys()
-        canonicalized_keys = []
-        for key in keys:
-            if key.startswith(prefix):
-                canonicalized_keys.append(key)
-        canonicalized_keys.sort()
-        result_list = []
-        for canonicalized_key in canonicalized_keys:
-            result_list.append(canonicalized_key)
-            result_list.append(":")
-            result_list.append(headers.get(canonicalized_key).strip())
-            result_list.append("\n")
-        return "".join(result_list)
-
-    @staticmethod
-    def _get_canonicalized_resource(pathname, query):
-        if not pathname:
-            return "/"
-        if not query:
-            return pathname
-        keys = query.keys()
-        path = [pathname, "?"]
-        return Client._get_canonicalized_query_string(path, query, list(keys))
-
-    @staticmethod
-    def _get_canonicalized_query_string(path, query, keys):
-        if not query:
-            return ""
-        if not path:
-            path = []
-        if not keys:
-            return ""
-        keys.sort()
-        for key in keys:
-            path.append(key)
-            value = query.get(key)
-            if value:
-                path.append("=")
-                path.append(value)
-            path.append("&")
-        path.pop()
-        return "".join(path)
-
-    @staticmethod
     def get_content_length(
-            req_body,
-    ):
+            req_body: bytes,
+    ) -> str:
+
         return str(len(req_body))
 
     @staticmethod
-    def get_content_sha256(
-            req_body,
-    ):
-        return hashlib.sha256(req_body).hexdigest().upper()
+    def get_private_pem_from_pk_12(
+            private_key_data: bytes,
+            password: str,
+    ) -> str:
+        pk12 = crypto.load_pkcs12(private_key_data, password)
+        private_key = crypto.dump_privatekey(crypto.FILETYPE_PEM, pk12.get_privatekey()).decode()
+        return Client.trim_private_key_pem(private_key)
 
     @staticmethod
-    def to_hex_string(
-            byte_array,
-    ):
-        return byte_array.hex().upper()
+    def trim_private_key_pem(private_key: str) -> str:
+        prefix = "-----BEGIN PRIVATE KEY-----"
+        newline = "\n"
+        suffix = "-----END PRIVATE KEY-----"
+        private_key = private_key.replace(prefix, "")
+        private_key = private_key.replace(suffix, "")
+        return private_key.replace(newline, "")
 
     @staticmethod
-    def get_serialized_encrypt_request(
-            req_body,
-    ):
-        encrypt_request = api_pb2.EncryptRequest()
-        key_id = req_body.get("KeyId")
-        if key_id:
-            encrypt_request.KeyId = key_id
-        plaintext = req_body.get("Plaintext")
-        if plaintext:
-            encrypt_request.Plaintext = plaintext
-        algorithm = req_body.get("Algorithm")
-        if algorithm:
-            encrypt_request.Algorithm = algorithm
-        iv = req_body.get("Iv")
-        if iv:
-            encrypt_request.Iv = iv
-        aad = req_body.get("Aad")
-        if aad:
-            encrypt_request.Aad = aad
-        padding_mode = req_body.get("PaddingMode")
-        if padding_mode:
-            encrypt_request.PaddingMode = padding_mode
-        return encrypt_request.SerializeToString()
+    def get_string_to_sign(
+            method: str,
+            pathname: str,
+            headers: Dict[str, str],
+            query: Dict[str, str],
+    ) -> str:
+        content_sha256 = headers.get('content-sha256')
+        if UtilClient.is_unset(content_sha256):
+            content_sha256 = ''
+        content_type = headers.get('content-type')
+        if UtilClient.is_unset(content_type):
+            content_type = ''
+        date = headers.get('date')
+        if UtilClient.is_unset(date):
+            date = ''
+        header = f'{method}\n{content_sha256}\n{content_type}\n{date}\n'
+        canonicalized_headers = Client.get_canonicalized_headers(headers)
+        canonicalized_resource = Client.get_canonicalized_resource(pathname, query)
+        return f'{header}{canonicalized_headers}{canonicalized_resource}'
+
+    @staticmethod
+    def get_canonicalized_headers(
+            headers: Dict[str, str],
+    ) -> str:
+        if UtilClient.is_unset(headers):
+            return
+        prefix = 'x-kms-'
+        keys = MapClient.key_set(headers)
+        sorted_keys = ArrayClient.asc_sort(keys)
+        canonicalized_headers = ''
+        for key in sorted_keys:
+            if StringClient.has_prefix(key, prefix):
+                canonicalized_headers = f'{canonicalized_headers}{key}:{StringClient.trim(headers.get(key))}\n'
+        return canonicalized_headers
+
+    @staticmethod
+    def get_canonicalized_resource(
+            pathname: str,
+            query: Dict[str, str],
+    ) -> str:
+        if not UtilClient.is_unset(pathname):
+            return '/'
+        if UtilClient.is_unset(query):
+            return pathname
+        canonicalized_resource = ''
+        query_array = MapClient.key_set(query)
+        sorted_query_array = ArrayClient.asc_sort(query_array)
+        separator = ''
+        canonicalized_resource = f'{pathname}?'
+        for key in sorted_query_array:
+            canonicalized_resource = f'{canonicalized_resource}{separator}{key}'
+            if not UtilClient.empty(query.get(key)):
+                canonicalized_resource = f'{canonicalized_resource}={query.get(key)}'
+            separator = '&'
+        return canonicalized_resource
+
+    @staticmethod
+    def default_boolean(
+            bool_1: bool,
+            bool_2: bool,
+    ) -> bool:
+        if UtilClient.is_unset(bool_1):
+            return bool_2
+        else:
+            return bool_1
+
+    @staticmethod
+    def is_retry_err(
+            err: TeaException,
+    ) -> bool:
+        if err.code == "Rejected.Throttling":
+            return True
+        return False
 
     @staticmethod
     def parse_encrypt_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         encrypt_response = api_pb2.EncryptResponse()
         encrypt_response.ParseFromString(res_body)
         result["KeyId"] = encrypt_response.KeyId
         result["CiphertextBlob"] = encrypt_response.CiphertextBlob
         result["Iv"] = encrypt_response.Iv
+        result["RequestId"] = encrypt_response.RequestId
         result["Algorithm"] = encrypt_response.Algorithm
         result["PaddingMode"] = encrypt_response.PaddingMode
-        result["RequestId"] = encrypt_response.RequestId
         return result
 
     @staticmethod
     def get_serialized_decrypt_request(
-            req_body,
-    ):
-        decrypt_request = api_pb2.DecryptRequest()
-        key_id = req_body.get("KeyId")
-        if key_id:
-            decrypt_request.KeyId = key_id
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.DecryptRequest()
         ciphertext_blob = req_body.get("CiphertextBlob")
         if ciphertext_blob:
-            decrypt_request.CiphertextBlob = ciphertext_blob
+            request.CiphertextBlob = ciphertext_blob
+        key_id = req_body.get("KeyId")
+        if key_id:
+            request.KeyId = key_id
         algorithm = req_body.get("Algorithm")
         if algorithm:
-            decrypt_request.Algorithm = algorithm
-        iv = req_body.get("Iv")
-        if iv:
-            decrypt_request.Iv = iv
+            request.Algorithm = algorithm
         aad = req_body.get("Aad")
         if aad:
-            decrypt_request.Aad = aad
+            request.Aad = aad
+        iv = req_body.get("Iv")
+        if iv:
+            request.Iv = iv
         padding_mode = req_body.get("PaddingMode")
         if padding_mode:
-            decrypt_request.PaddingMode = padding_mode
-        return decrypt_request.SerializeToString()
+            request.PaddingMode = padding_mode
+        return request.SerializeToString()
 
     @staticmethod
     def parse_decrypt_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         decrypt_response = api_pb2.DecryptResponse()
         decrypt_response.ParseFromString(res_body)
         result["KeyId"] = decrypt_response.KeyId
         result["Plaintext"] = decrypt_response.Plaintext
+        result["RequestId"] = decrypt_response.RequestId
         result["Algorithm"] = decrypt_response.Algorithm
         result["PaddingMode"] = decrypt_response.PaddingMode
-        result["RequestId"] = decrypt_response.RequestId
-        return result
-
-    @staticmethod
-    def get_serialized_hmac_request(
-            req_body,
-    ):
-        hmac_request = api_pb2.HmacRequest()
-        key_id = req_body.get("KeyId")
-        if key_id:
-            hmac_request.KeyId = key_id
-        message = req_body.get("Message")
-        if message:
-            hmac_request.Message = message
-        return hmac_request.SerializeToString()
-
-    @staticmethod
-    def parse_hmac_response(
-            res_body,
-    ):
-        result = {}
-        hmac_response = api_pb2.HmacResponse()
-        hmac_response.ParseFromString(res_body)
-        result["KeyId"] = hmac_response.KeyId
-        result["Signature"] = hmac_response.Signature
-        result["RequestId"] = hmac_response.RequestId
         return result
 
     @staticmethod
     def get_serialized_sign_request(
-            req_body,
-    ):
-        sign_request = api_pb2.SignRequest()
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.SignRequest()
         key_id = req_body.get("KeyId")
         if key_id:
-            sign_request.KeyId = key_id
+            request.KeyId = key_id
+        digest = req_body.get("Digest")
+        if digest:
+            request.Digest = digest
         algorithm = req_body.get("Algorithm")
         if algorithm:
-            sign_request.Algorithm = algorithm
+            request.Algorithm = algorithm
         message = req_body.get("Message")
         if message:
-            sign_request.Message = message
+            request.Message = message
         message_type = req_body.get("MessageType")
         if message_type:
-            sign_request.MessageType = message_type
-        return sign_request.SerializeToString()
+            request.MessageType = message_type
+        return request.SerializeToString()
 
     @staticmethod
     def parse_sign_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         sign_response = api_pb2.SignResponse()
         sign_response.ParseFromString(res_body)
         result["KeyId"] = sign_response.KeyId
         result["Signature"] = sign_response.Signature
+        result["RequestId"] = sign_response.RequestId
         result["Algorithm"] = sign_response.Algorithm
         result["MessageType"] = sign_response.MessageType
-        result["RequestId"] = sign_response.RequestId
         return result
 
     @staticmethod
     def get_serialized_verify_request(
-            req_body,
-    ):
-        verify_request = api_pb2.VerifyRequest()
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.VerifyRequest()
         key_id = req_body.get("KeyId")
         if key_id:
-            verify_request.KeyId = key_id
-        algorithm = req_body.get("Algorithm")
-        if algorithm:
-            verify_request.Algorithm = algorithm
+            request.KeyId = key_id
+        digest = req_body.get("Digest")
+        if digest:
+            request.Digest = digest
         signature = req_body.get("Signature")
         if signature:
-            verify_request.Signature = signature
+            request.Signature = signature
+        algorithm = req_body.get("Algorithm")
+        if algorithm:
+            request.Algorithm = algorithm
         message = req_body.get("Message")
         if message:
-            verify_request.Message = message
+            request.Message = message
         message_type = req_body.get("MessageType")
         if message_type:
-            verify_request.MessageType = message_type
-        return verify_request.SerializeToString()
+            request.MessageType = message_type
+        return request.SerializeToString()
 
     @staticmethod
     def parse_verify_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         verify_response = api_pb2.VerifyResponse()
         verify_response.ParseFromString(res_body)
         result["KeyId"] = verify_response.KeyId
         result["Value"] = verify_response.Value
+        result["RequestId"] = verify_response.RequestId
         result["Algorithm"] = verify_response.Algorithm
         result["MessageType"] = verify_response.MessageType
-        result["RequestId"] = verify_response.RequestId
         return result
 
     @staticmethod
     def get_serialized_generate_random_request(
-            req_body,
-    ):
-        random_request = api_pb2.GenerateRandomRequest()
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.GenerateRandomRequest()
         length = req_body.get("Length")
         if length:
-            random_request.Length = length
-        return random_request.SerializeToString()
+            request.Length = length
+        return request.SerializeToString()
 
     @staticmethod
     def parse_generate_random_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
-        random_response = api_pb2.GenerateRandomResponse()
-        random_response.ParseFromString(res_body)
-        result["Random"] = random_response.Random
-        result["RequestId"] = random_response.RequestId
+        generate_random_response = api_pb2.GenerateRandomResponse()
+        generate_random_response.ParseFromString(res_body)
+        result["Random"] = generate_random_response.Random
+        result["RequestId"] = generate_random_response.RequestId
         return result
 
     @staticmethod
     def get_serialized_generate_data_key_request(
-            req_body,
-    ):
-        generate_data_key_request = api_pb2.GenerateDataKeyRequest()
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.GenerateDataKeyRequest()
         key_id = req_body.get("KeyId")
         if key_id:
-            generate_data_key_request.KeyId = key_id
+            request.KeyId = key_id
         algorithm = req_body.get("Algorithm")
         if algorithm:
-            generate_data_key_request.Algorithm = algorithm
+            request.Algorithm = algorithm
         number_of_bytes = req_body.get("NumberOfBytes")
         if number_of_bytes:
-            generate_data_key_request.NumberOfBytes = number_of_bytes
+            request.NumberOfBytes = number_of_bytes
         aad = req_body.get("Aad")
         if aad:
-            generate_data_key_request.Aad = aad
-        return generate_data_key_request.SerializeToString()
+            request.Aad = aad
+        return request.SerializeToString()
 
     @staticmethod
     def parse_generate_data_key_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         generate_data_key_response = api_pb2.GenerateDataKeyResponse()
         generate_data_key_response.ParseFromString(res_body)
@@ -339,24 +320,26 @@ class Client(object):
         result["Iv"] = generate_data_key_response.Iv
         result["Plaintext"] = generate_data_key_response.Plaintext
         result["CiphertextBlob"] = generate_data_key_response.CiphertextBlob
-        result["Algorithm"] = generate_data_key_response.Algorithm
         result["RequestId"] = generate_data_key_response.RequestId
+        result["Algorithm"] = generate_data_key_response.Algorithm
         return result
 
     @staticmethod
     def get_serialized_get_public_key_request(
-            req_body,
-    ):
-        get_public_key_request = api_pb2.GetPublicKeyRequest()
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.GetPublicKeyRequest()
         key_id = req_body.get("KeyId")
         if key_id:
-            get_public_key_request.KeyId = key_id
-        return get_public_key_request.SerializeToString()
+            request.KeyId = key_id
+        return request.SerializeToString()
 
     @staticmethod
     def parse_get_public_key_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         get_public_key_response = api_pb2.GetPublicKeyResponse()
         get_public_key_response.ParseFromString(res_body)
@@ -366,105 +349,30 @@ class Client(object):
         return result
 
     @staticmethod
-    def get_serialized_hash_request(
-            req_body,
-    ):
-        hash_request = api_pb2.HashRequest()
-        algorithm = req_body.get("Algorithm")
-        if algorithm:
-            hash_request.Algorithm = algorithm
-        message = req_body.get("Message")
-        if message:
-            hash_request.Message = message
-        return hash_request.SerializeToString()
-
-    @staticmethod
-    def parse_hash_response(
-            res_body,
-    ):
-        result = {}
-        hash_response = api_pb2.HashResponse()
-        hash_response.ParseFromString(res_body)
-        result["Digest"] = hash_response.Digest
-        result["RequestId"] = hash_response.RequestId
-        return result
-
-    @staticmethod
-    def get_serialized_kms_encrypt_request(
-            req_body,
-    ):
-        kms_encrypt_request = api_pb2.KmsEncryptRequest()
-        plaintext = req_body.get("Plaintext")
-        if plaintext:
-            kms_encrypt_request.Plaintext = plaintext
-        key_id = req_body.get("KeyId")
-        if key_id:
-            kms_encrypt_request.KeyId = key_id
-        aad = req_body.get("Aad")
-        if aad:
-            kms_encrypt_request.Aad = aad
-        return kms_encrypt_request.SerializeToString()
-
-    @staticmethod
-    def parse_kms_encrypt_response(
-            res_body,
-    ):
-        result = {}
-        kms_encrypt_response = api_pb2.KmsEncryptResponse()
-        kms_encrypt_response.ParseFromString(res_body)
-        result["KeyId"] = kms_encrypt_response.KeyId
-        result["CiphertextBlob"] = kms_encrypt_response.CiphertextBlob
-        result["RequestId"] = kms_encrypt_response.RequestId
-        return result
-
-    @staticmethod
-    def get_serialized_kms_decrypt_request(
-            req_body,
-    ):
-        kms_decrypt_request = api_pb2.KmsDecryptRequest()
-        ciphertext_blob = req_body.get("CiphertextBlob")
-        if ciphertext_blob:
-            kms_decrypt_request.CiphertextBlob = ciphertext_blob
-        aad = req_body.get("Aad")
-        if aad:
-            kms_decrypt_request.Aad = aad
-        return kms_decrypt_request.SerializeToString()
-
-    @staticmethod
-    def parse_kms_decrypt_response(
-            res_body,
-    ):
-        result = {}
-        kms_decrypt_response = api_pb2.KmsDecryptResponse()
-        kms_decrypt_response.ParseFromString(res_body)
-        result["KeyId"] = kms_decrypt_response.KeyId
-        result["Plaintext"] = kms_decrypt_response.Plaintext
-        result["RequestId"] = kms_decrypt_response.RequestId
-        return result
-
-    @staticmethod
     def get_serialized_get_secret_value_request(
-            req_body,
-    ):
-        get_secret_value_request = api_pb2.GetSecretValueRequest()
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.GetSecretValueRequest()
         secret_name = req_body.get("SecretName")
         if secret_name:
-            get_secret_value_request.SecretName = secret_name
+            request.SecretName = secret_name
         version_stage = req_body.get("VersionStage")
         if version_stage:
-            get_secret_value_request.VersionStage = version_stage
+            request.VersionStage = version_stage
         version_id = req_body.get("VersionId")
         if version_id:
-            get_secret_value_request.VersionId = version_id
+            request.VersionId = version_id
         fetch_extended_config = req_body.get("FetchExtendedConfig")
         if fetch_extended_config:
-            get_secret_value_request.FetchExtendedConfig = fetch_extended_config
-        return get_secret_value_request.SerializeToString()
+            request.FetchExtendedConfig = fetch_extended_config
+        return request.SerializeToString()
 
     @staticmethod
     def parse_get_secret_value_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         get_secret_value_response = api_pb2.GetSecretValueResponse()
         get_secret_value_response.ParseFromString(res_body)
@@ -472,118 +380,124 @@ class Client(object):
         result["SecretType"] = get_secret_value_response.SecretType
         result["SecretData"] = get_secret_value_response.SecretData
         result["SecretDataType"] = get_secret_value_response.SecretDataType
-        result["VersionStages"] = [version_stage for version_stage in get_secret_value_response.VersionStages]
+        result["VersionStages"] = get_secret_value_response.VersionStages
         result["VersionId"] = get_secret_value_response.VersionId
         result["CreateTime"] = get_secret_value_response.CreateTime
+        result["RequestId"] = get_secret_value_response.RequestId
         result["LastRotationDate"] = get_secret_value_response.LastRotationDate
         result["NextRotationDate"] = get_secret_value_response.NextRotationDate
         result["ExtendedConfig"] = get_secret_value_response.ExtendedConfig
         result["AutomaticRotation"] = get_secret_value_response.AutomaticRotation
         result["RotationInterval"] = get_secret_value_response.RotationInterval
-        result["RequestId"] = get_secret_value_response.RequestId
         return result
 
     @staticmethod
     def get_serialized_advance_encrypt_request(
-            req_body,
-    ):
-        advance_encrypt_request = api_pb2.AdvanceEncryptRequest()
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.AdvanceEncryptRequest()
         key_id = req_body.get("KeyId")
         if key_id:
-            advance_encrypt_request.KeyId = key_id
+            request.KeyId = key_id
         plaintext = req_body.get("Plaintext")
         if plaintext:
-            advance_encrypt_request.Plaintext = plaintext
+            request.Plaintext = plaintext
         algorithm = req_body.get("Algorithm")
         if algorithm:
-            advance_encrypt_request.Algorithm = algorithm
-        iv = req_body.get("Iv")
-        if iv:
-            advance_encrypt_request.Iv = iv
+            request.Algorithm = algorithm
         aad = req_body.get("Aad")
         if aad:
-            advance_encrypt_request.Aad = aad
+            request.Aad = aad
+        iv = req_body.get("Iv")
+        if iv:
+            request.Iv = iv
         padding_mode = req_body.get("PaddingMode")
         if padding_mode:
-            advance_encrypt_request.PaddingMode = padding_mode
-        return advance_encrypt_request.SerializeToString()
+            request.PaddingMode = padding_mode
+        return request.SerializeToString()
 
     @staticmethod
     def parse_advance_encrypt_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         advance_encrypt_response = api_pb2.AdvanceEncryptResponse()
         advance_encrypt_response.ParseFromString(res_body)
         result["KeyId"] = advance_encrypt_response.KeyId
         result["CiphertextBlob"] = advance_encrypt_response.CiphertextBlob
         result["Iv"] = advance_encrypt_response.Iv
+        result["RequestId"] = advance_encrypt_response.RequestId
         result["Algorithm"] = advance_encrypt_response.Algorithm
         result["PaddingMode"] = advance_encrypt_response.PaddingMode
         result["KeyVersionId"] = advance_encrypt_response.KeyVersionId
-        result["RequestId"] = advance_encrypt_response.RequestId
         return result
 
     @staticmethod
     def get_serialized_advance_decrypt_request(
-            req_body,
-    ):
-        advance_decrypt_request = api_pb2.AdvanceDecryptRequest()
-        key_id = req_body.get("KeyId")
-        if key_id:
-            advance_decrypt_request.KeyId = key_id
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.AdvanceDecryptRequest()
         ciphertext_blob = req_body.get("CiphertextBlob")
         if ciphertext_blob:
-            advance_decrypt_request.CiphertextBlob = ciphertext_blob
+            request.CiphertextBlob = ciphertext_blob
+        key_id = req_body.get("KeyId")
+        if key_id:
+            request.KeyId = key_id
         algorithm = req_body.get("Algorithm")
         if algorithm:
-            advance_decrypt_request.Algorithm = algorithm
-        iv = req_body.get("Iv")
-        if iv:
-            advance_decrypt_request.Iv = iv
+            request.Algorithm = algorithm
         aad = req_body.get("Aad")
         if aad:
-            advance_decrypt_request.Aad = aad
+            request.Aad = aad
+        iv = req_body.get("Iv")
+        if iv:
+            request.Iv = iv
         padding_mode = req_body.get("PaddingMode")
         if padding_mode:
-            advance_decrypt_request.PaddingMode = padding_mode
-        return advance_decrypt_request.SerializeToString()
+            request.PaddingMode = padding_mode
+        return request.SerializeToString()
 
     @staticmethod
     def parse_advance_decrypt_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         advance_decrypt_response = api_pb2.AdvanceDecryptResponse()
         advance_decrypt_response.ParseFromString(res_body)
         result["KeyId"] = advance_decrypt_response.KeyId
         result["Plaintext"] = advance_decrypt_response.Plaintext
+        result["RequestId"] = advance_decrypt_response.RequestId
         result["Algorithm"] = advance_decrypt_response.Algorithm
         result["PaddingMode"] = advance_decrypt_response.PaddingMode
         result["KeyVersionId"] = advance_decrypt_response.KeyVersionId
-        result["RequestId"] = advance_decrypt_response.RequestId
         return result
 
     @staticmethod
     def get_serialized_advance_generate_data_key_request(
-            req_body,
-    ):
-        advance_generate_data_key_request = api_pb2.AdvanceGenerateDataKeyRequest()
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.AdvanceGenerateDataKeyRequest()
         key_id = req_body.get("KeyId")
         if key_id:
-            advance_generate_data_key_request.KeyId = key_id
+            request.KeyId = key_id
         number_of_bytes = req_body.get("NumberOfBytes")
         if number_of_bytes:
-            advance_generate_data_key_request.NumberOfBytes = number_of_bytes
+            request.NumberOfBytes = number_of_bytes
         aad = req_body.get("Aad")
         if aad:
-            advance_generate_data_key_request.Aad = aad
-        return advance_generate_data_key_request.SerializeToString()
+            request.Aad = aad
+        return request.SerializeToString()
 
     @staticmethod
     def parse_advance_generate_data_key_response(
-            res_body,
-    ):
+            res_body: bytes,
+    ) -> dict:
+
         result = {}
         advance_generate_data_key_response = api_pb2.AdvanceGenerateDataKeyResponse()
         advance_generate_data_key_response.ParseFromString(res_body)
@@ -591,7 +505,192 @@ class Client(object):
         result["Iv"] = advance_generate_data_key_response.Iv
         result["Plaintext"] = advance_generate_data_key_response.Plaintext
         result["CiphertextBlob"] = advance_generate_data_key_response.CiphertextBlob
+        result["RequestId"] = advance_generate_data_key_response.RequestId
         result["Algorithm"] = advance_generate_data_key_response.Algorithm
         result["KeyVersionId"] = advance_generate_data_key_response.KeyVersionId
-        result["RequestId"] = advance_generate_data_key_response.RequestId
+        return result
+
+    @staticmethod
+    def get_serialized_encrypt_request(
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.EncryptRequest()
+        key_id = req_body.get("KeyId")
+        if key_id:
+            request.KeyId = key_id
+        plaintext = req_body.get("Plaintext")
+        if plaintext:
+            request.Plaintext = plaintext
+        algorithm = req_body.get("Algorithm")
+        if algorithm:
+            request.Algorithm = algorithm
+        aad = req_body.get("Aad")
+        if aad:
+            request.Aad = aad
+        iv = req_body.get("Iv")
+        if iv:
+            request.Iv = iv
+        padding_mode = req_body.get("PaddingMode")
+        if padding_mode:
+            request.PaddingMode = padding_mode
+        return request.SerializeToString()
+
+    @staticmethod
+    def get_serialized_generate_data_key_pair_request(
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.GenerateDataKeyPairRequest()
+        key_id = req_body.get("KeyId")
+        if key_id:
+            request.KeyId = key_id
+        algorithm = req_body.get("Algorithm")
+        if algorithm:
+            request.Algorithm = algorithm
+        key_pair_spec = req_body.get("KeyPairSpec")
+        if key_pair_spec:
+            request.KeyPairSpec = key_pair_spec
+        key_format = req_body.get("KeyFormat")
+        if key_format:
+            request.KeyFormat = key_format
+        aad = req_body.get("Aad")
+        if aad:
+            request.Aad = aad
+        return request.SerializeToString()
+
+    @staticmethod
+    def parse_generate_data_key_pair_response(
+            res_body: bytes,
+    ) -> dict:
+
+        result = {}
+        generate_data_key_pair_response = api_pb2.GenerateDataKeyPairResponse()
+        generate_data_key_pair_response.ParseFromString(res_body)
+        result["KeyId"] = generate_data_key_pair_response.KeyId
+        result["Iv"] = generate_data_key_pair_response.Iv
+        result["KeyPairSpec"] = generate_data_key_pair_response.KeyPairSpec
+        result["PrivateKeyPlaintext"] = generate_data_key_pair_response.PrivateKeyPlaintext
+        result["PrivateKeyCiphertextBlob"] = generate_data_key_pair_response.PrivateKeyCiphertextBlob
+        result["PublicKey"] = generate_data_key_pair_response.PublicKey
+        result["RequestId"] = generate_data_key_pair_response.RequestId
+        result["Algorithm"] = generate_data_key_pair_response.Algorithm
+        return result
+
+    @staticmethod
+    def get_serialized_generate_data_key_pair_without_plaintext_request(
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.GenerateDataKeyPairWithoutPlaintextRequest()
+        key_id = req_body.get("KeyId")
+        if key_id:
+            request.KeyId = key_id
+        algorithm = req_body.get("Algorithm")
+        if algorithm:
+            request.Algorithm = algorithm
+        key_pair_spec = req_body.get("KeyPairSpec")
+        if key_pair_spec:
+            request.KeyPairSpec = key_pair_spec
+        key_format = req_body.get("KeyFormat")
+        if key_format:
+            request.KeyFormat = key_format
+        aad = req_body.get("Aad")
+        if aad:
+            request.Aad = aad
+        return request.SerializeToString()
+
+    @staticmethod
+    def parse_generate_data_key_pair_without_plaintext_response(
+            res_body: bytes,
+    ) -> dict:
+
+        result = {}
+        generate_data_key_pair_without_plaintext_response = api_pb2.GenerateDataKeyPairWithoutPlaintextResponse()
+        generate_data_key_pair_without_plaintext_response.ParseFromString(res_body)
+        result["KeyId"] = generate_data_key_pair_without_plaintext_response.KeyId
+        result["Iv"] = generate_data_key_pair_without_plaintext_response.Iv
+        result["KeyPairSpec"] = generate_data_key_pair_without_plaintext_response.KeyPairSpec
+        result["PrivateKeyCiphertextBlob"] = generate_data_key_pair_without_plaintext_response.PrivateKeyCiphertextBlob
+        result["PublicKey"] = generate_data_key_pair_without_plaintext_response.PublicKey
+        result["RequestId"] = generate_data_key_pair_without_plaintext_response.RequestId
+        result["Algorithm"] = generate_data_key_pair_without_plaintext_response.Algorithm
+        return result
+
+    @staticmethod
+    def get_serialized_advance_generate_data_key_pair_request(
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.AdvanceGenerateDataKeyPairRequest()
+        key_id = req_body.get("KeyId")
+        if key_id:
+            request.KeyId = key_id
+        key_pair_spec = req_body.get("KeyPairSpec")
+        if key_pair_spec:
+            request.KeyPairSpec = key_pair_spec
+        key_format = req_body.get("KeyFormat")
+        if key_format:
+            request.KeyFormat = key_format
+        aad = req_body.get("Aad")
+        if aad:
+            request.Aad = aad
+        return request.SerializeToString()
+
+    @staticmethod
+    def parse_advance_generate_data_key_pair_response(
+            res_body: bytes,
+    ) -> dict:
+
+        result = {}
+        advance_generate_data_key_pair_response = api_pb2.AdvanceGenerateDataKeyPairResponse()
+        advance_generate_data_key_pair_response.ParseFromString(res_body)
+        result["KeyId"] = advance_generate_data_key_pair_response.KeyId
+        result["Iv"] = advance_generate_data_key_pair_response.Iv
+        result["KeyPairSpec"] = advance_generate_data_key_pair_response.KeyPairSpec
+        result["PrivateKeyPlaintext"] = advance_generate_data_key_pair_response.PrivateKeyPlaintext
+        result["PrivateKeyCiphertextBlob"] = advance_generate_data_key_pair_response.PrivateKeyCiphertextBlob
+        result["PublicKey"] = advance_generate_data_key_pair_response.PublicKey
+        result["RequestId"] = advance_generate_data_key_pair_response.RequestId
+        result["Algorithm"] = advance_generate_data_key_pair_response.Algorithm
+        result["KeyVersionId"] = advance_generate_data_key_pair_response.KeyVersionId
+        return result
+
+    @staticmethod
+    def get_serialized_advance_generate_data_key_pair_without_plaintext_request(
+            req_body: Dict[str, Any],
+    ) -> bytes:
+
+        request = api_pb2.AdvanceGenerateDataKeyPairWithoutPlaintextRequest()
+        key_id = req_body.get("KeyId")
+        if key_id:
+            request.KeyId = key_id
+        key_pair_spec = req_body.get("KeyPairSpec")
+        if key_pair_spec:
+            request.KeyPairSpec = key_pair_spec
+        key_format = req_body.get("KeyFormat")
+        if key_format:
+            request.KeyFormat = key_format
+        aad = req_body.get("Aad")
+        if aad:
+            request.Aad = aad
+        return request.SerializeToString()
+
+    @staticmethod
+    def parse_advance_generate_data_key_pair_without_plaintext_response(
+            res_body: bytes,
+    ) -> dict:
+
+        result = {}
+        advance_generate_data_key_pair_without_plaintext_response = api_pb2.AdvanceGenerateDataKeyPairWithoutPlaintextResponse()
+        advance_generate_data_key_pair_without_plaintext_response.ParseFromString(res_body)
+        result["KeyId"] = advance_generate_data_key_pair_without_plaintext_response.KeyId
+        result["Iv"] = advance_generate_data_key_pair_without_plaintext_response.Iv
+        result["KeyPairSpec"] = advance_generate_data_key_pair_without_plaintext_response.KeyPairSpec
+        result[
+            "PrivateKeyCiphertextBlob"] = advance_generate_data_key_pair_without_plaintext_response.PrivateKeyCiphertextBlob
+        result["PublicKey"] = advance_generate_data_key_pair_without_plaintext_response.PublicKey
+        result["RequestId"] = advance_generate_data_key_pair_without_plaintext_response.RequestId
+        result["Algorithm"] = advance_generate_data_key_pair_without_plaintext_response.Algorithm
+        result["KeyVersionId"] = advance_generate_data_key_pair_without_plaintext_response.KeyVersionId
         return result
