@@ -18,6 +18,8 @@ from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_darabonba_map.client import Client as MapClient
 from alibabacloud_darabonba_array.client import Client as ArrayClient
 
+USER_AGENT = "kms-gcs-python-sdk-version/" + "1.0.2"
+
 
 class Client:
     _endpoint: str = None
@@ -81,7 +83,7 @@ class Client:
         self._endpoint = config.endpoint
         self._protocol = config.protocol
         self._region_id = config.region_id
-        self._user_agent = config.user_agent
+        self._user_agent = config.user_agent if config.user_agent is not None else USER_AGENT
         self._read_timeout = config.read_timeout
         self._connect_timeout = config.connect_timeout
         self._http_proxy = config.http_proxy
