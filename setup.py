@@ -17,11 +17,11 @@ DESCRIPTION = "AlibabaCloud DKMS-GCS SDK for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
 URL = "https://github.com/aliyun/alibabacloud-dkms-gcs-python-sdk"
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 REQUIRES = [
-	"alibabacloud_openapi_util>=0.2.1, <1.0.0",
+    "alibabacloud_openapi_util>=0.2.1, <1.0.0",
     "protobuf>=3.12.0 ,<4.0.0",
-    "pyopenssl>=16.2.0",
+    "pyopenssl>=16.2.0,<23.3.0",
     "alibabacloud_darabonba_array>=0.1.0, <1.0.0",
     "alibabacloud_darabonba_stream>=0.0.1, <1.0.0",
     "alibabacloud_darabonba_string>=0.0.4, <1.0.0",
@@ -54,7 +54,7 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Programming Language :: Python",
-	"Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
