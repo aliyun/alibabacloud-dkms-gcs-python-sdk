@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 import time
-
 from Tea.exceptions import TeaException, UnretryableException
 from Tea.request import TeaRequest
 from Tea.core import TeaCore
@@ -81,7 +80,7 @@ class Client:
         self._endpoint = config.endpoint
         self._protocol = config.protocol
         self._region_id = config.region_id
-        self._user_agent = config.user_agent
+        self._user_agent = DedicatedKmsOpenapiUtilClient.get_user_agent(config.user_agent)
         self._read_timeout = config.read_timeout
         self._connect_timeout = config.connect_timeout
         self._http_proxy = config.http_proxy
@@ -144,7 +143,7 @@ class Client:
                 _request.headers['accept'] = 'application/x-protobuf'
                 _request.headers['host'] = self._endpoint
                 _request.headers['date'] = UtilClient.get_date_utcstring()
-                _request.headers['user-agent'] = UtilClient.get_user_agent(self._user_agent)
+                _request.headers['user-agent'] = self._user_agent
                 _request.headers['x-kms-apiversion'] = api_version
                 _request.headers['x-kms-apiname'] = api_name
                 _request.headers['x-kms-signaturemethod'] = signature_method
